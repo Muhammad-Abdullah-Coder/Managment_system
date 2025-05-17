@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+        }
+        .card {
+            border: none; 
+            border-radius: 10px; 
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        {% comment %} footer {
+            background-color: #343a40; 
+            height: 30%;
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            margin-top: auto; 
+        } {% endcomment %}
+
+        footer {
+            background-color: #343a40;
+            height: auto; 
+            color: white; 
+            text-align: center; 
+            padding: 10px 0;
+            margin-top: auto; 
+        }
+        
+        footer p {
+            margin: 0;
+        }  
+
+        .btn1{
+            color: white;
+            margin: 10px;
+        }
+
+        a:hover {
+            font-size: 1.2em; /* Increase font size on hover */
+            color: #f8f9fa; /* Change color on hover */
+            text-decoration: underline; /* Optionally underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <hr style="border: 2px solid green;">
+    <header> 
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <h1 class="navbar-brand mx-auto"><i class="fas fa-lock"></i> Management System</h1>
+            </div>
+        </nav>
+    </header>
+    
+
+    <div class="container mt-5 flex-grow-1">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm bg-light">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-4"><i class="fas fa-sign-in-alt"></i> Login</h4>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username"><i class="fas fa-user"></i> Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password"><i class="fas fa-lock"></i> Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Login</button>
+                        </form>
+                        {% if form.errors %}
+                            <div class="alert alert-danger mt-3">
+                                {{ form.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <br><br><br><br>
+
+    <footer>
+        <p>© 2024 Management System. All Rights Reserved.</p>
+        <p>Contact us: support@managementsystem.com | Phone: +113-344-567</p>
+        <p>Privacy Policy | Terms of Service</p>
+
+        <div class="mt-3">
+            <a href="https://twitter.com" target="_blank" class="btn1">
+                <i class="fab fa-twitter"></i> Twitter
+            </a>|
+            <a href="https://www.linkedin.com" target="_blank" class="btn1">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>|
+            <a href="https://www.instagram.com" target="_blank" class="btn1">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>|
+            <a href="https://www.facebook.com" target="_blank" class="btn1">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+        </div>
+        
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

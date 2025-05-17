@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Management System{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .sidebar {
+            height: 100vh; 
+            padding-top: 48px; 
+            background-color: #343a40; /* Dark background for sidebar */
+            color: white; /* White text color */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar .nav-link {
+            color: #adb5bd; /* Lighter text for nav links */
+        }
+        .sidebar .nav-link.active {
+            background-color: #007bff; /* Blue background for active link */
+            color: white; /* White text for active link */
+        }
+        .sidebar .nav-link:hover {
+            background-color: #495057; /* Darker background on hover */
+            color: white; /* White text on hover */
+        }
+        .footer {
+            position: fixed; 
+            bottom: 0; 
+            width: 100%; 
+            padding: 15px;
+            background-color: Blue;
+            color: white; /* White text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <nav class="sidebar col-md-2 position-fixed">
+            <h1 class="logo text-center text-white mb-4">
+                Admin Panel
+            </h1>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'dashboard' %}">
+                        <i class="fa-solid fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_student' %}">
+                        <i class="fas fa-user-plus"></i> Add Student
+                    </a>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'mark_attendance' %}">
+                        <i class="fas fa-calendar-check"></i> Attendance List
+                    </a>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'total_students' %}">
+                        <i class="fas fa-users"></i> Total Students List
+                    </a>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'settings' %}">
+                        <i class="fas fa-cog"></i> Settings
+                    </a>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <form action="{% url 'logout' %}" method="POST" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link" style="background: none; border: none; color: #adb5bd;">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </form>
+                </li>                
+                <br>
+            </ul>
+        </nav>
+
+        <main role="main" class="col-md-9 offset-md-2">
+            <div class="container-fluid" style="padding-top: 20px;">
+
+                {% if messages %}
+                <div class="container">
+                    {% for message in messages %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+              {% endif %}
+
+                {% block content %}
+                <div class="content">
+                    
+                    <hr class="my-4"> 
+                </div>
+                {% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer text-center">
+        <div class="container">
+            <span>&copy; {{ current_year }} Admin Panel system. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

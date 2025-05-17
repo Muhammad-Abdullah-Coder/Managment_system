@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Your Site Name{% endblock %}
+
+{% block content %}
+<section class="main">
+    <div class="maintop text-center mb-4">
+        <h1 class="hd display-4">Students Profile</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for student in students %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg border-0 rounded">
+                    <img src="{{ student.image.url }}" class="card-img-top" alt="{{ student.name }}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Name:</strong> {{ student.name }}</h5>
+                        <p class="card-text"><strong>Occupation:</strong> {{ student.occupation }}</p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                      <strong>Present:</strong> {{ student.present_percentage }} 
+                            </div>
+                            <div class="col-6">
+                                         <strong>Good Work:</strong> {{ student.good_work_percentage }}
+                            </div>
+                            <div class="col-6">
+                                <strong>Joining Month:</strong> {{ student.joining_month }}
+                            </div>
+                            <div class="col-6">
+                                <strong>Joining Year:</strong> {{ student.joining_year }}
+                            </div>
+                        </div>
+                        <a href="{% url 'student_detail' student.pk %}" class="btn btn-primary mt-3">View Profile</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

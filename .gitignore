@@ -1,0 +1,27 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore Django database file
+db.sqlite3
+*.sqlite3
+
+# Ignore environment variables
+.env
+
+# Ignore media & static generated files
+staticfiles/
+media/
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore virtual environment folder
+venv/
+
+# Ignore log files
+*.log
+
+# Ignore migration files if not needed (optional)
+**/migrations/*.py
+!**/migrations/__init__.py

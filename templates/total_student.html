@@ -1,0 +1,45 @@
+<!-- total_student.html -->
+{% extends 'base.html' %}
+
+{% block title %}Total Students List{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4 text-primary">
+        <i class="fas fa-users"></i> Total Students List
+    </h1>
+
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Occupation</th>
+                <th>Phone Number</th>
+                <th>Joining Month</th>
+                <th>Joining Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.address }}</td>
+                <td>{{ student.occupation }}</td>
+                <td>{{ student.number }}</td>
+                <td>{{ student.joining_month }}</td>
+                <td>{{ student.joining_year }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8" class="text-center">No students found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

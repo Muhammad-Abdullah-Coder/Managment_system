@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Student {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Add Student</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card" style="background-color: #007bff; color: white;">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="id_name" style="color: white;">Name <i class="fas fa-user"></i></label>
+                    <input type="text" name="name" id="id_name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_occupation" style="color: white;">Occupation <i class="fas fa-briefcase"></i></label>
+                    <input type="text" name="occupation" id="id_occupation" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_present_percentage" style="color: white;">Present Percentage <i class="fas fa-chart-line"></i></label>
+                    <input type="number" name="present_percentage" id="id_present_percentage" class="form-control" required step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="id_good_work_percentage" style="color: white;">Good Work Percentage <i class="fas fa-star"></i></label>
+                    <input type="number" name="good_work_percentage" id="id_good_work_percentage" class="form-control" required step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="id_joining_month" style="color: white;">Joining Month <i class="fas fa-calendar-alt"></i></label>
+                    <input type="number" name="joining_month" id="id_joining_month" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_joining_year" style="color: white;">Joining Year <i class="fas fa-calendar-year"></i></label>
+                    <input type="number" name="joining_year" id="id_joining_year" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_image" style="color: white;">Image <i class="fas fa-image"></i></label>
+                    <input type="file" name="image" id="id_image" class="form-control-file" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_email" style="color: white;">Email <i class="fas fa-envelope"></i></label>
+                    <input type="email" name="email" id="id_email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_number" style="color: white;">Phone Number <i class="fas fa-phone"></i></label>
+                    <input type="text" name="number" id="id_number" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_father_number" style="color: white;">Father's Phone Number <i class="fas fa-phone-alt"></i></label>
+                    <input type="text" name="father_number" id="id_father_number" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="id_address" style="color: white;">Address <i class="fas fa-address-card"></i></label>
+                    <textarea name="address" id="id_address" class="form-control" rows="3"></textarea>
+                </div>                
+                <button type="submit" class="btn btn-light mt-3">
+                    <i class="fas fa-save"></i> Save
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="text-center mt-4">
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+</div>
+{% endblock %}
